@@ -11,7 +11,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todoList: ["item1", "item2"],
+      todoList: [],
     };
   }
 
@@ -21,14 +21,20 @@ class App extends React.Component {
       task: todo,
       id: Date.now(),
       completed: false,
-    }
+    };
 
     this.setState({
       ...this.state,
-      todoList: [
-        newTask,
-        ...todoList
-      ]
+      todoList: [newTask, ...this.state.todoList],
+    });
+  };
+
+  handleClearCompletedTodos = () => {
+    this.setState({
+      ...this.state,
+      todoList: this.state.todoList.filter((task) => {
+        return !task.completed;
+      }),
     });
   };
 
