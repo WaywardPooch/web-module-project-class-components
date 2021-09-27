@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   // ========== EVENT HANDLERS
-  handleAddTodo = (todo) => {
+  handleAdd = (todo) => {
     const newTask = {
       task: todo,
       id: Date.now(),
@@ -29,7 +29,23 @@ class App extends Component {
     });
   };
 
-  handleClearCompletedTodos = () => {
+  handleToggle = (id) => {
+    this.setState({
+      ...this.state,
+      todoList: this.state.todoList.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            completed: todo.completed ? false : true,
+          };
+        } else {
+          return todo;
+        }
+      }),
+    });
+  };
+
+  handleClear = () => {
     this.setState({
       ...this.state,
       todoList: this.state.todoList.filter((task) => {
@@ -43,8 +59,11 @@ class App extends Component {
     return (
       <div>
         <h1>Todo List</h1>
-        <TodoList todos={this.state.todoList} />
-        <TodoForm handleAdd={this.handleAddTodo} />
+        <TodoList
+          handleToggle={this.handleToggle}
+          todos={this.state.todoList}
+        />
+        <TodoForm handleAdd={this.handleAdd} />
       </div>
     );
   }

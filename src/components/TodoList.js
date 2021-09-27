@@ -11,7 +11,7 @@ class TodoList extends Component {
     return (
       <div>
         {this.props.todos.map((todo) => {
-          return <Todo taskName={todo.task} />;
+          return <Todo handleToggle={this.props.handleToggle} todo={todo} />;
         })}
       </div>
     );
