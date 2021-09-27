@@ -1,12 +1,12 @@
 // ========== IMPORT
 // Libraries
-import React from "react";
+import React, { Component } from "react";
 // Custom components
 import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
 
 // ========== DEFINE
-class App extends React.Component {
+class App extends Component {
   // ========== CONSTRUCTOR / STATES
   constructor() {
     super();
@@ -44,7 +44,7 @@ class App extends React.Component {
       <div>
         <h1>Todo List</h1>
         <TodoList todos={this.state.todoList} />
-        <TodoForm handleAddTodo={this.handleAddTodo} />
+        <TodoForm handleAdd={this.handleAddTodo} />
       </div>
     );
   }

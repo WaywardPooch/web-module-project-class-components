@@ -10,8 +10,8 @@ class TodoList extends Component {
   render() {
     return (
       <div>
-        {this.props.todos.map((task) => {
-          return <Todo taskName={task} />;
+        {this.props.todos.map((todo) => {
+          return <Todo taskName={todo.task} />;
         })}
       </div>
     );
