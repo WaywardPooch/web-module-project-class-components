@@ -59,6 +59,7 @@ class App extends Component {
     return (
       <div>
         <h1>Todo List</h1>
+        <button onClick={this.handleClear}>Clear Completed</button>
         <TodoList
           handleToggle={this.handleToggle}
           todos={this.state.todoList}

@@ -1,6 +1,8 @@
 // ========== IMPORTS
 // Libraries
 import React, { Component } from "react";
+// Styles
+import "./Todo.css";
 
 // ========== DEFINITIONS
 class Todo extends Component {
