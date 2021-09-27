@@ -3,6 +3,7 @@
 import React from "react";
 // Custom components
 import TodoList from "./components/TodoList";
+import TodoForm from "./components/TodoForm";
 
 // ========== DEFINE
 class App extends React.Component {
@@ -10,17 +11,34 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todoList: ["item1","item2"],
+      todoList: ["item1", "item2"],
     };
   }
 
   // ========== EVENT HANDLERS
+  handleAddTodo = (todo) => {
+    const newTask = {
+      task: todo,
+      id: Date.now(),
+      completed: false,
+    }
+
+    this.setState({
+      ...this.state,
+      todoList: [
+        newTask,
+        ...todoList
+      ]
+    });
+  };
 
   // ========== MARKUP
   render() {
     return (
       <div>
-        <TodoList todos={this.state.todoList}/>
+        <h1>Todo List</h1>
+        <TodoList todos={this.state.todoList} />
+        <TodoForm handleAddTodo={this.handleAddTodo} />
       </div>
     );
   }
